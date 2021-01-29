@@ -21,3 +21,43 @@ jobs:
           python-version: 3.9
 
       - uses: pre-commit/action@v2.0.0
+
+  tox:
+    name: ${{ matrix.toxenv }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toxenv:
+          - types
+          - unit
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Set up Poetry
+        shell: bash
+        run: pip install poetry
+
+      - name: Set up cache
+        uses: actions/cache@v2
+        id: poetry-cache
+        with:
+          path: .venv
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Install dependencies
+        shell: bash
+        run: poetry install
+
+      - name: Run ${{ matrix.toxenv }}
+        shell: bash
+        run: poetry run tox -e ${{ matrix.toxenv }}
