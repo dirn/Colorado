@@ -9,6 +9,7 @@ repository = "https://github.com/dirn/Colorado"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+structlog = "^20.2.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.10.0"
