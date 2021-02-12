@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest  # type: ignore[import]
 
-from andyd.log import Entry, append_entries
+from colorado.log import Entry, append_entries
 
 
 @pytest.mark.parametrize("length_of_log", range(10))

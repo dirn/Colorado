@@ -1,4 +1,4 @@
-# andyd
+# Colorado
 
 An toy implementation of the [Raft Consensus Algorithm][raft].
 
