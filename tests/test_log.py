@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import pytest  # type: ignore[import]
+import pytest
 
 from colorado.log import Entry, append_entries
 
